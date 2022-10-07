@@ -1,0 +1,15 @@
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data" style="font-size:15px">
+        {% csrf_token %}
+        <div class="row align-items-center" style="flex: relative; justify-content:center;">
+            <div class="col-9">
+            <input type="text" name="messg" class="form-control" style="max-width:600px">
+            </div>
+            <div class="col-3">
+            <button type="submit" class = "btn btn-primary"style="font-size:15px">send</button> 
+            </div>
+        </div>
+        
+        
+    </form>
+</div>

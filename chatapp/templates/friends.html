@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% block content %}  
+    {% if user.is_authenticated %} 
+    <div class="container chat-title">
+        <h2>Friends to chat</h2>
+    </div>
+    <div class="container">
+        {% for msguser in users %}
+        {% if msguser != user %}
+        <a href="{% url 'chat' msguser.id %}"><div class="chat">
+            {{ msguser.first_name }} {{ msguser.last_name }} {% if msguser.profile.is_hod %}<i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i>{% endif %}
+            {% for mes in list %}
+                {% if mes.receiver == user and mes.sender == msguser and mes.first %}
+                    {{mes.msg}}
+                {% endif %}
+            {% endfor %}
+            
+        </div></a>
+        
+        {% endif %}
+        {% endfor %}
+    </div>
+        
+    {%else%}
+        <a href="{% url 'login' %}" class="btn btn-primary" >Login</a>    
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}  
+{% if user.is_authenticated %}
+<center>
+    <div class="form-container" style="padding:10px; justify-content: center; display: flex"> 
+        <div class="container" >
+            <form method="POST" enctype="multipart/form-data" class="profile-form"  >
+                {% csrf_token %}
+                {{form}}
+                <button class="btn btn-primary">Update</button>
+            </form>
+        </div>
+    </div>
+</center>
+{% endif %}
+{% endblock %}

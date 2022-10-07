@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}  
+<center>
+    
+
+<div class="form-container" style="padding:10px; justify-content: center; display: flex"> 
+    <div class="container" >
+        <td><a style="font-size: 20px;font-weight: 700;" >{{ user.first_name}} {{ user.last_name}} {% if user.profile.is_hod %}<i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i>{% endif %} </a> <a class="btn btn-primary" href="{% url 'edit_profile_name' user.pk %}">Change Bio</a></td><br><br>
+        <form action="{% url 'edit_profile' user.profile.id %}" method="POST" enctype="multipart/form-data" class="profile-form"  >
+            {% csrf_token %}
+            <tr>
+                 
+        <td>
+            {% if user.profile.profile_pics %}
+            <a href="{{ user.profile.profile_pics.url }}"><img src="{{ user.profile.profile_pics.url}}" /></a><br><br>
+            {% endif %}
+          
+    Change:
+    <input type="file" name="profile_pics" accept="image/*" id="id_profile_pics" style="background-color:rgb(70, 221, 206); border-radius: 20px; max-width:200px; border-color:#32e7c0">
+          
+          
+            
+          
+        </td>
+    </tr> <br><br>
+        <center>
+            <button class="btn btn-primary">Update</button>
+        </center> 
+            
+    </form>
+</div>
+</div>
+</center>
+        
+{% endblock %}

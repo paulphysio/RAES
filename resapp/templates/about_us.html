@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About the Creator{% endblock%}
+{% block content %}
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team pt-0">
+    <div class="container" >
+    
+    <div class="section-header">
+      <span>Our Team</span>
+      <h2>Our Team</h2>
+    
+    </div>
+    
+    <div class="row" data-aos="fade-up">
+    
+      <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+        <div class="member">
+          <img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Paul Madu <i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i></h4>
+            <span>Developer</span>
+            <p>
+              Fullstack web developer, Graphics designer.
+            </p>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    
+       <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+        <div class="member">
+          <img src="{% static 'assets/img/team/team-2.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Elvis Chilaka <i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i></h4>
+            <span>Product Manager</span>
+            <p>
+              UI/UX designer.
+            </p>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    
+      {% comment %}<div class="col-lg-4 col-md-6 d-flex">
+        <div class="member">
+          <img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>William Anderson</h4>
+            <span>Content</span>
+            <p>
+              Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+            </p>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Team Member --> {% endcomment %}
+    
+    </div>
+    
+    </div>
+    </section><!-- End Our Team Section -->
+{% endblock %}

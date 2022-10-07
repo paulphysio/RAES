@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{sheet}}{% endblock%}
+{% block content %}   
+{% if user.is_authenticated %} 
+{% if user == activity_detail.user %}
+<h1><a style="font-size: 20px;font-weight: 700;" >{{ user.first_name}} {{ user.last_name}} {% if user.profile.is_hod %}<i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i>{% endif %} </a></h1>
+<h2>{{ sheet }}</h2>
+<center>
+<div class="overflow-auto" >
+    <table style="border: 3px solid black; text-align: center; background-color:#fff;justify-content: center; " >
+        {% for lists in reallist %}
+            <tr>
+                {% if forloop.first %}
+                    {% for list in lists %}
+                        <th  style="padding: 10px; border-bottom: 3px solid black;">
+                            {{ list }} 
+                        </th>
+                    {% endfor %}
+                {% else %}
+                    {% for list in lists %}
+                        <td >
+                            {{ list }} 
+                        </td>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    
+</div></center><br>
+
+<div class="container" style="display: flex; align-items: center; justify-content: center;">
+    <form action="{% url 'send_mail' activity_detail.pk %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-primary">Send the results to the corresponding email</button><br>
+       
+    </form><hr>
+    <a href={% url 'delete_file' activity_detail.pk %} class="btn btn-danger">delete File</a>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}
