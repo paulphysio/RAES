@@ -15,10 +15,12 @@
                 </div>
             {% endif %}
             {% if user.profile.is_hod %}
-            <div class="container">
+            <button class = "btn btn-primary hide"style="font-size:15px;" onclick="file()">upload</button>
+
+            <div class="container not-visible hide-file" style="padding-top:10px">
                 <form action="{% url 'activity_form' %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
                     {% csrf_token %}
-                    <input type="file" name="uploaded_file"style="padding-bottom:10px;" ><br>
+                    <input type="file" name="uploaded_file"style="padding-bottom:10px;" required><br>
                      
                     <button type="submit" class = "btn btn-primary"style="font-size:15px;">upload</button>
                     <a style="color: red;">Please upload excel files only!!! </a> 
