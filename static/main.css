@@ -1,3 +1,20 @@
 .not-visible{
     display:none;
 }
+
+@media (max-width: 500px) {
+    .upload-button {
+      width: 350px;
+    }
+  }
+@media (min-width: 500px) {
+    .upload-button {
+    width: 350px;
+    }
+ }
+
+  @media (min-width: 1100px) {
+    .upload-button {
+      width: 800px;
+    }
+  }

@@ -750,7 +750,6 @@ a .chat:hover{
   box-shadow: 0 0 10px;
   border-radius: 20px;
   text-decoration: none;
-  position:relative ;
 }
 .file:hover{
   transition: 500ms;

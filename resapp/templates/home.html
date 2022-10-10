@@ -10,13 +10,13 @@
             {% if user.profile %}
                 <div class="container">
                     {% if user.profile.profile_pics %}
-                        <h4><a style="font-size: 8px;"><img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="width:60px; height:auto; border-radius:30px">{% endif %}</a> <a style="font-size: 20px;font-weight: 700;" >{{ user.first_name}} {{ user.last_name}} {% if user.profile.is_hod %}<i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i>{% endif %} </a></h4>
+                        <h4><a style="font-size: 8px;"><img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="width:60px; height:60px; border-radius:30px">{% endif %}</a> <a style="font-size: 20px;font-weight: 700;" >{{ user.first_name}} {{ user.last_name}} {% if user.profile.is_hod %}<i class="bi bi-patch-check-fill" style="color: #5ddbf2;"></i>{% endif %} </a></h4>
                     
                 </div>
             {% endif %}
             {% if user.profile.is_hod %}
-            <div style="padding-left: 10px; padding-right: 10px" >
-                <button class = "btn btn-primary hide"style="font-size:15px; width:800px" onclick="file()">upload</button>
+            <div style="padding-left: 10px; padding-right: 10px" class="text-center">
+                <button class = "btn btn-primary hide upload-button"style="font-size:15px;" onclick="file()" >upload</button>
             </div>
             
 
@@ -38,23 +38,25 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <div class="files" > 
-           
-            {% for act in activity_list %}
-                {% if act.user == user %}
-                    <div class="file">
-                        <h5><a href="{% url 'file_details' act.pk  %}" class="stretched-link">
-                            {% if act.file_uploaded.name|length < 20 %}
-                                {{ act.file_uploaded.name }}
-                             
-                            {%  else%}
-                                {{ act.file_uploaded.name|slice:20 }}...
-                            {% endif %}</a></h5>
-                        
-                    </div><br>
-                {% endif %}
-            {% endfor %}
-        </div>
+        <center>
+            <div class="files text-center" > 
+            
+                {% for act in activity_list %}
+                    {% if act.user == user %}
+                        <div class="file text-center">
+                            <h5><a href="{% url 'file_details' act.pk  %}" class="stretched-link">
+                                {% if act.file_uploaded.name|length < 20 %}
+                                    {{ act.file_uploaded.name }}
+                                
+                                {%  else%}
+                                    {{ act.file_uploaded.name|slice:20 }}...
+                                {% endif %}</a></h5>
+                            
+                        </div><br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </center>
         {% else %}
         {% if user.profile %}
         <h3>You are not yet registered as a course advisor in this app, contact the owner of the site to register. </h3>
