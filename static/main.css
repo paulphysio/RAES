@@ -2,11 +2,19 @@
     display:none;
 }
 
+
 @media (max-width: 500px) {
     .upload-button {
       width: 350px;
     }
   }
+
+@media (max-width: 363px) {
+    .upload-button {
+      width: 250px;
+    }
+  }  
+
 @media (min-width: 500px) {
     .upload-button {
     width: 350px;
