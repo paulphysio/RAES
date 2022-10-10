@@ -19,7 +19,12 @@ def sendMail(request, pk):
     df = pd.read_excel(sheet)
     wb = op.load_workbook(sheet)
     wa = wb.active
-    email_index = df.columns.get_loc('Email')
+    if df.columns.get_loc('Email'):
+        email_index = df.columns.get_loc('Email')
+    elif df.columns.get_loc('EMAIL'):
+        email_index = df.columns.get_loc('EMAIL')
+    elif df.columns.get_loc('email'):
+        email_index = df.columns.get_loc('email')
     reallist = []
     f_msg = []
     for i in range(1, wa.max_row+1):
@@ -47,36 +52,42 @@ def sendMail(request, pk):
         server=smtplib.SMTP_SSL("smtp.gmail.com", port, context=context)
         server.login(email, password)
         em = MIMEMultipart("alternative")
-        em['From'] = email
+        em['From'] = 'The Course Adviser'
         em['To'] = receiver
-        em['Subject'] = "your results"
+        em['Subject'] = "Harmattan semester results"
         
         text = body_message
+        results = []
+        for i in range(len(lister)):
+            for j in range(len(list)):
+                if i == j:
+                    #print(str(lister[i]) + ":" + str(list[j]))
+                    result = str(lister[i]) + " : " + str(list[j])+";"
+                    results.append(result)
+        name= ('\n '.join(map(str, results)))
+                    
+                    
+            
         html = f"""\
-                <table>
-                    <tr>
-                        <th>
-                            { headmsg }
-                        <th>
-                    </tr>
-                    <tr>
-                        <td>
-                            { body_message }
-                        <td>
-                    </tr>
-                </table>
+            <h1>This message contains the results for the harmattan semester.</h1>
+            <h3>{name}</h3>
+            
             """
-        part1 = MIMEText(text, "plain")
+            
+        real_result = name
+        # part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
-        em.attach(part1)
+        part3 = MIMEText(real_result, "plain")
+        # em.attach(part1)
         em.attach(part2)
+        #em.attach(part3)
         server.sendmail(email, receiver, em.as_string())
         print("message sent")
         if request.method == 'POST':
 
             sender = request.user
             receiver_email = receiver
-            message_sent = text + str(html)
+            message_sent = text + str(html) + real_result
 
             emailSender(sender=sender, receiver_email = receiver_email, message_sent = message_sent).save()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/home")

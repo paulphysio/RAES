@@ -15,7 +15,10 @@
                 </div>
             {% endif %}
             {% if user.profile.is_hod %}
-            <button class = "btn btn-primary hide"style="font-size:15px;" onclick="file()">upload</button>
+            <div style="padding-left: 10px; padding-right: 10px" >
+                <button class = "btn btn-primary hide"style="font-size:15px; width:800px" onclick="file()">upload</button>
+            </div>
+            
 
             <div class="container not-visible hide-file" style="padding-top:10px">
                 <form action="{% url 'activity_form' %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
