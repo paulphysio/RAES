@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock%}
 {% block content %}  
     {% if user.is_authenticated %}  
-        
+    
    
 
         <div class="row">
@@ -15,22 +15,16 @@
                 </div>
             {% endif %}
             {% if user.profile.is_hod %}
+            <!-- Button trigger modal file form -->
             <div style="padding-left: 10px; padding-right: 10px" class="text-center">
-                <button class = "btn btn-primary hide upload-button"style="font-size:15px;" onclick="file()" >upload</button>
+                <button class = "btn btn-primary hide upload-button"style="font-size:15px;" data-toggle="modal" data-target="#UploadFileModal">upload</button>
             </div>
             
 
-            <div class="container not-visible hide-file" style="padding-top:10px">
-                <form action="{% url 'activity_form' %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
-                    {% csrf_token %}
-                    <input type="file" name="uploaded_file"style="padding-bottom:10px;" required><br>
-                     
-                    <button type="submit" class = "btn btn-primary"style="font-size:15px;">upload</button>
-                    <a style="color: red;">Please upload excel files only!!! </a> 
-                </form>
-            </div>
+           
             
         </div><br>  
+        
         <div class="container">
             {% if messages %}
                 {% for message in messages %}
@@ -43,20 +37,22 @@
             
                 {% for act in activity_list %}
                     {% if act.user == user %}
-                        <div class="file text-center">
-                            <h5><a href="{% url 'file_details' act.pk  %}" class="stretched-link">
+                        <a href="{% url 'file_details' act.pk  %}" ><div class="file text-center">
+                            <h5>
                                 {% if act.file_uploaded.name|length < 20 %}
                                     {{ act.file_uploaded.name }}
                                 
                                 {%  else%}
                                     {{ act.file_uploaded.name|slice:20 }}...
-                                {% endif %}</a></h5>
+                                {% endif %}</h5>
                             
-                        </div><br>
+                        </div></a><br>
                     {% endif %}
                 {% endfor %}
             </div>
         </center>
+
+       
         {% else %}
         {% if user.profile %}
         <h3>You are not yet registered as a course advisor in this app, contact the owner of the site to register. </h3>

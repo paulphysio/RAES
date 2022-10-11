@@ -20,6 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
+
+
   <!-- Vendor CSS Files -->
   <link href="{% static  'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static  'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
@@ -41,7 +43,38 @@
 </head>
 
 <body>
-  
+  <!-- =======================================================
+  * Modal form for uploading of Excel file
+  ======================================================== -->
+  <div class="modal fade" id="UploadFileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container text-center" style="padding-top:10px">
+            <form action="{% url 'activity_form' %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
+                {% csrf_token %}
+                <input type="file" name="uploaded_file"style="padding-bottom:10px;" required><br>
+                 
+                <button type="submit" class = "btn btn-primary"style="font-size:15px;">upload</button>
+                <a style="color: red;">Please upload excel files only!!! </a> 
+            </form>
+        </div>
+        </center>        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for uploading of Excel file
+  ======================================================== -->
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -201,6 +234,9 @@
   <script src="{% static  'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static  'assets/vendor/bootstrap/js/swiperbundle.min.js' %}"></script>
   <script src="{% static  'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static  'assets/vendor/popper/jquery-3.2.1.slim.min.js' %}"></script>
+  <script src="{% static  'assets/vendor/popper/popper.min.js' %}"></script>
+  <script src="{% static  'assets/vendor/popper/bootstrap.min.js' %}"></script>
   <script src="{% static  'assets/vendor/php-email-form/validate.js' %}"></script>
 
   <!-- Template Main JS File -->
