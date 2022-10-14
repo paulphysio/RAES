@@ -49,15 +49,21 @@ def deleteView(request, pk):
 def homeView(request):
     activity_list = activity.objects.all()
     first = True
-    for list in activity_list:
-        if first:
-            list = list
-            first = False
-    context = {
-        "activity_list":activity_list,
-        "activity_detail":list,
-       
-    }
+    if activity_list:
+        for list in activity_list:
+            if first:
+                list = list
+                first = False
+        context = {
+            "activity_list":activity_list,
+            "activity_detail":list,
+        
+        }
+    else:
+        context = {
+            
+        
+        }
     return render(request, "home.html", context)
 def aboutView(request):
     return render(request, "about.html")
