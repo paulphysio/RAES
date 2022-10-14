@@ -40,10 +40,10 @@
                         <a href="{% url 'file_details' act.pk  %}" ><div class="file text-center">
                             <h5>
                                 {% if act.file_uploaded.name|length < 20 %}
-                                    {{ act.file_uploaded.name }}
+                                    {{ act.Department }} {{ act.result_level }}
                                 
                                 {%  else%}
-                                    {{ act.file_uploaded.name|slice:20 }}...
+                                    {{ act.Department }} {{ act.result_level }} results for {{ act.session }} {{ act.semester }} semester
                                 {% endif %}</h5>
                             
                         </div></a><br>

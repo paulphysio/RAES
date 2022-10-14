@@ -65,10 +65,7 @@
                     <div class="col">
                     <button type="submit" class = "btn btn-danger"style="font-size:15px">delete</button> 
                     </div>
-                    
                 </div>
-                
-                
             </form>
         </div>
         </div>
@@ -128,23 +125,48 @@
           <div class="container text-center" style="padding-top:10px">
             <form action="{% url 'activity_form' %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
                 {% csrf_token %}
-                <input type="file" name="uploaded_file"style="padding-bottom:10px;" class="form-control" required><br>
-                <select name="result_level" id="result_level" class="form-control">
-                  <option value="100">100</option>
-                  <option value="200">200</option>
-                  <option value="300">300</option>
-                  <option value="400">400</option>
-                  <option value="500">500</option>
-                  <option value="600">600</option>
-                </select>
-                <select name="Department" id="Department" class="form-control">
-                  <option value="PET">PET</option>
-                  <option value="CHEM">CHEM</option>
-                  <option value="MECH">MECH</option>
-                </select>
-                <br>
-                <button type="submit" class = "btn btn-primary"style="font-size:15px;">upload</button>
-                <a style="color: red;">Please upload excel files only!!! </a> 
+                <div class="row" >
+                  <div class="container">
+                  <input type="file" name="uploaded_file"style="padding-bottom:10px;" class="form-control" required><br>
+                  </div>
+                  <div class="col-6">
+
+                    <select name="result_level" id="result_level" class="form-control">
+                      <option value="100">100</option>
+                      <option value="200">200</option>
+                      <option value="300">300</option>
+                      <option value="400">400</option>
+                      <option value="500">500</option>
+                      <option value="600">600</option>
+                    </select><br>
+                    <select name="Department" id="Department" class="form-control">
+                      <option value="PET">PET</option>
+                      <option value="CHEM">CHEM</option>
+                      <option value="MECH">MECH</option>
+                    </select>
+                  </div>
+                  <br>
+                  <div class="col-6">
+                  <select name="session" id="session" class="form-control">
+                    <option value="2020/2021">2020/2021</option>
+                    <option value="2021/2022">2021/2022</option>
+                    <option value="2022/2023">2022/2023</option>
+                    <br>
+                  </select>
+                  <br>
+                  <select name="semester" id="semester" class="form-control">
+                    <option value="Rain">Rain</option>
+                    <option value="Harmattan">Harmattan</option>
+                  </select>
+                  <br>
+                </div>
+                  <br>
+                  <div class="container">
+                  <button type="submit" class = "btn btn-primary"style="font-size:15px; width:100%">upload</button>
+                  </div>
+                  <br>
+                  <a style="color: red;">Please upload excel files only!!! </a>
+                </div> 
             </form>
           </div>
         </div>

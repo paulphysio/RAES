@@ -112,12 +112,14 @@ def activityFormView(request):
         file_uploaded = request.FILES['uploaded_file']
         result_level = request.POST['result_level']
         Department = request.POST['Department']
+        session = request.POST['session']
+        semester = request.POST['semester']
         
         #verifying that the file must be an excel sheet
         if not file_uploaded.name.endswith('xlsx'):
             messages.error(request, f'wrong format')
         else:
-            form = activity(user = user, file_uploaded = file_uploaded, result_level=result_level, Department=Department)
+            form = activity(user = user, file_uploaded = file_uploaded, result_level=result_level, Department=Department, session=session, semester=semester)
             form.save()
         return HttpResponseRedirect('/home')
     return render(request, "home.html", {"file_form": file_form} )
