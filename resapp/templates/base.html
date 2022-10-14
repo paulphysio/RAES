@@ -43,6 +43,73 @@
 </head>
 
 <body>
+<!-- =======================================================
+  * Modal form for Deleting File
+  ======================================================== -->
+  <div class="modal fade" id="DeleteFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete this file</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <h3>Are you sure?</h3> 
+            <form action="{% url 'delete_file' activity_detail.pk %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                    <button type="submit" class = "btn btn-danger"style="font-size:15px">delete</button> 
+                    </div>
+                    
+                </div>
+                
+                
+            </form>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Deleting File
+  ======================================================== -->
+  
+  
+  
+  
+  <!-- =======================================================
+  * Modal form for Logout
+  ======================================================== -->
+  <div class="modal fade" id="Logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a href="{% url 'logout'%}" class="btn btn-danger">Logout</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Logout
+  ======================================================== -->
+
+
   <!-- =======================================================
   * Modal form for uploading of Excel file
   ======================================================== -->
@@ -50,22 +117,35 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title" id="exampleModalLabel">Upload Excel File</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close" style="width: 50px;">
+            <span aria-hidden="true"  style="font-size: 25px;">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="container text-center" style="padding-top:10px">
             <form action="{% url 'activity_form' %}" method="POST" enctype="multipart/form-data" style="font-size:15px">
                 {% csrf_token %}
-                <input type="file" name="uploaded_file"style="padding-bottom:10px;" required><br>
-                 
+                <input type="file" name="uploaded_file"style="padding-bottom:10px;" class="form-control" required><br>
+                <select name="result_level" id="result_level" class="form-control">
+                  <option value="100">100</option>
+                  <option value="200">200</option>
+                  <option value="300">300</option>
+                  <option value="400">400</option>
+                  <option value="500">500</option>
+                  <option value="600">600</option>
+                </select>
+                <select name="Department" id="Department" class="form-control">
+                  <option value="PET">PET</option>
+                  <option value="CHEM">CHEM</option>
+                  <option value="MECH">MECH</option>
+                </select>
+                <br>
                 <button type="submit" class = "btn btn-primary"style="font-size:15px;">upload</button>
                 <a style="color: red;">Please upload excel files only!!! </a> 
             </form>
+          </div>
         </div>
-        </center>        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
@@ -100,7 +180,7 @@
             
             {%endif%}
             <li><a href="{% url 'chat_list'%}">Chat</a></li>
-            <li><a href="{% url 'logout'%}">Logout</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li>
           {%else%}
           
           <li><a href="{% url 'login'%}">Login</a></li>

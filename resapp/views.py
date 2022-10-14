@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import activity, askedQuestions
 import pandas as pd
 import openpyxl as op
@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.views.generic import DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import AnonymousUser
+from .forms import ActivityForm
 
 def questionAskedView(request):
     if request.method=='POST':
@@ -16,16 +17,45 @@ def questionAskedView(request):
         askedQuestions(question=question).save()
     return render(request, "about.html")
 
-class deleteView(DeleteView):
-    model = activity
-    template_name = "delete_file.html"
-    success_url='/'
+# class deleteView(DeleteView):
+#     model = activity
+#     template_name = "delete_file.html"
+#     success_url='/'
     
+    
+    
+# delete view for details
+def deleteView(request, pk):
+    # dictionary for initial data with
+    # field names as keys
+    
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(activity, id = pk)
+    act_id = obj.id
+    
+ 
+    if request.method =="POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to
+        # home page
+        return HttpResponseRedirect("/home")
+    context ={}
+    context['object'] = 28
+    return render(request, "base.html", context)
+   
 # Create your views here.
 def homeView(request):
     activity_list = activity.objects.all()
+    first = True
+    for list in activity_list:
+        if first:
+            list = list
+            first = False
     context = {
         "activity_list":activity_list,
+        "activity_detail":list,
        
     }
     return render(request, "home.html", context)
@@ -70,13 +100,18 @@ def detailView(request, pk):
 
 @login_required
 def activityFormView(request):
+    file_form = ActivityForm
     if request.method=='POST':
         user = request.user
         file_uploaded = request.FILES['uploaded_file']
+        result_level = request.POST['result_level']
+        Department = request.POST['Department']
+        
         #verifying that the file must be an excel sheet
         if not file_uploaded.name.endswith('xlsx'):
             messages.error(request, f'wrong format')
         else:
-            form = activity(user = user, file_uploaded = file_uploaded)
+            form = activity(user = user, file_uploaded = file_uploaded, result_level=result_level, Department=Department)
             form.save()
-    return HttpResponseRedirect('/home')
+        return HttpResponseRedirect('/home')
+    return render(request, "home.html", {"file_form": file_form} )
