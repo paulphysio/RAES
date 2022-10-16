@@ -31,11 +31,24 @@ class EditProfileNameView(UpdateView):
     form_class = ProfileNameForm
     success_url=reverse_lazy("home")
 
-class signUpView(CreateView):
-    form_class = SignUpForm
-    template_name = "registration/signup.html"
-    success_url = reverse_lazy("login")
+# class signUpView(CreateView):
+#     form_class = SignUpForm
+#     template_name = "registration/signup.html"
+#     success_url = reverse_lazy("login")
     
+def signUpView(request):
+    signupform = SignUpForm(request.POST)
+    if request.method=='POST':
+        if signupform.is_valid():
+            signupform.save()
+            username = signupform.cleaned_data.get('username')
+            raw_password = signupform.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password, first_name=request.POST['first_name'],last_name=request.POST['last_name'], email=request.POST['email'])
+            
+            return redirect('login')
+    else:
+        signupform = SignUpForm()
+    return render(request, "registration/signup.html", {"signupform":signupform})
 
 def loginView(request):
     context = {}  

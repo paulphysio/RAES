@@ -46,6 +46,7 @@ def deleteView(request, pk):
     return render(request, "base.html", context)
    
 # Create your views here.
+@login_required
 def homeView(request):
     activity_list = activity.objects.all()
     first = True

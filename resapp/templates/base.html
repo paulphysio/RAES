@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +82,87 @@
   ======================================================== -->
   
   
+  <!-- =======================================================
+  * Modal form for Signup
+  ======================================================== -->
+  <div class="modal fade" id="Signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'sign_up' %}" method="POST"class="row g-3 needs-validation">
+            {% csrf_token %}
+           
+            <div style="padding:10px"> 
+              {% for field in my_form %}
+                  {{ field|as_crispy_field }}
+                  <p style="color: red">{{ field.error }}</p>
+              {% endfor %}
+              <br>
+              <center>
+                <button class="btn btn-success">Sign Up</button>
+              </center>  
+            </div>
+            <br/>
+                  
+        </form>        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Signup
+  ======================================================== -->
   
+  
+  <!-- =======================================================
+  * Modal form for Login
+  ======================================================== -->
+  <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="auth-container">
+            <div class="container" style="padding:10px">
+              <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" class="form-control"><br>
+                <input type="password" name="password" placeholder="Password" class="form-control"><br>                <center>
+                  <button class="btn btn-success">Login</button>
+                </center>
+              </form>
+              <div class="container">
+                <p><a href="{% url 'password_reset' %}">forgot password</a></p>
+                <p>Don't have an account, <a href="{% url 'sign_up' %}"> Sign Up</a></p>
+              </div>
+          
+          
+            </div>
+          
+            </div>       
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Login
+  ======================================================== -->
   
   <!-- =======================================================
   * Modal form for Logout
@@ -118,7 +199,7 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Upload Excel File</h5>
           <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close" style="width: 50px;">
-            <span aria-hidden="true"  style="font-size: 25px;">&times;</span>
+            <span aria-hidden="true" >&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -207,8 +288,8 @@
             <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li>
           {%else%}
           
-          <li><a href="{% url 'login'%}">Login</a></li>
-          <li><a href="{% url 'sign_up'%}">Signup</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#Login">Login</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#Signup">Signup</a></li>
           
           {%endif%}
         </ul>
@@ -222,7 +303,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+      <div class="page-header d-flex align-items-center">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-1 text-center">
