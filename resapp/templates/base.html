@@ -141,11 +141,11 @@
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Username" class="form-control"><br>
                 <input type="password" name="password" placeholder="Password" class="form-control"><br>                <center>
-                  <button class="btn btn-success">Login</button>
+                  <button class="btn btn-primary">Login</button>
                 </center>
               </form>
               <div class="container">
-                <p><a href="{% url 'password_reset' %}">forgot password</a></p>
+                <p><a href="#" data-toggle="modal" data-target="#Password_reset">forgot password</a></p>
                 <p>Don't have an account, <a href="{% url 'sign_up' %}"> Sign Up</a></p>
               </div>
           
@@ -187,6 +187,41 @@
   </div>
   <!-- =======================================================
   * Closing Modal form for Logout
+  ======================================================== -->
+
+<!-- =======================================================
+  * Modal form for Password reset
+  ======================================================== -->
+  <div class="modal fade" id="Password_reset" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Password reset</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Forgotten your password? Enter your email address below, and we’ll email instructions for setting a new one.</p>
+
+          <form action="{% url 'password_reset' %}" method="post" class="form-group">
+            {% csrf_token %}
+            <div class="auth-container">
+              <label for="id_email">Email:</label>
+              <input type="email" name="email" autocomplete="email" maxlength="254" required="" id="id_email" class="form-control"><br>
+              <center>
+                  <button class="btn btn-primary">reset password</button>
+              </center>   
+            </div>
+          </form>        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Password reset
   ======================================================== -->
 
 

@@ -12,11 +12,11 @@
       <input type="text" name="username" placeholder="Username" class="form-control"><br>
       <input type="password" name="password" placeholder="Password" class="form-control"><br>
       <center>
-        <button class="btn btn-success">Login</button>
+        <button class="btn btn-primary">Login</button>
       </center>
     </form>
     <div class="container">
-      <p><a href="{% url 'password_reset' %}">forgot password</a></p>
+      <p><a href="#" data-toggle="modal" data-target="#Password_reset">forgot password</a></p>
       <p>Don't have an account, <a href="{% url 'sign_up' %}"> Sign Up</a></p>
     </div>
 
