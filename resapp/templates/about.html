@@ -224,21 +224,9 @@
           </div>
         </div>
       </div><!-- # Faq item--> {% endcomment %}
-      <form action="{% url 'question' %}" method="post">
-        {% csrf_token %}
-        <div class="row" style="padding: 30px;">
-          <label for="">Ask Question and you'll be replied shortly</label>
-
-          <div class="col-8">
-            <input type="text" name="question" class="form-control" placeholder="Ask Question" style="max-width: 500px;">
-          </div>
-          <div class="col-4">
-            <button class="btn btn-primary">send</button>
-          </div>
-        </div>
-      </form>
+      
     </div>
-
+    <button class="btn btn-primary" data-toggle="modal" data-target="#Ask_question" style="width:100%;">Ask Question</button>
   </div>
 </div>
 {% endblock %}

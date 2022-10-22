@@ -13,8 +13,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static  'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static  'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static  'assets/img/RES_logo.png' %}" rel="icon">
+  <link href="{% static  'assets/img/RES_logo.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,75 @@
 </head>
 
 <body>
-<!-- =======================================================
+{% comment %} <!-- =======================================================
+  * Modal form for Bio
+  ======================================================== -->
+  <div class="modal fade" id="Bio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ask a question</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <center>
+            <div class="form-container" style="padding:10px; justify-content: center; display: flex"> 
+                <div class="container" >
+                    <form method="POST" enctype="multipart/form-data" class="profile-form" action="{% url 'edit_profile_name' user.pk %}" >
+                        {% csrf_token %}
+                        {{edit_bio}}
+                        <button class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Bio
+  ======================================================== --> {% endcomment %}
+  
+  <!-- =======================================================
+  * Modal form for Ask Question
+  ======================================================== -->
+  <div class="modal fade" id="Ask_question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ask a question</h5>
+          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'question' %}" method="post">
+            {% csrf_token %}
+            <center>
+              <label for="" style="color:blue;">Ask Question and the team will reply you shortly</label>
+    
+                <input id="question" type="text" name="question" class="form-control" placeholder="Ask a Question" style="width:100%;" required>
+                <br>
+                <button class="btn btn-primary" style="width:50%;">send</button>
+            </center>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =======================================================
+  * Closing Modal form for Ask Question
+  ======================================================== -->
+  <!-- =======================================================
   * Modal form for Deleting File
   ======================================================== -->
   {% if activity_detail %}
@@ -89,7 +157,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Are you sure</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
           <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
           </button>
@@ -105,7 +173,7 @@
               {% endfor %}
               <br>
               <center>
-                <button class="btn btn-success">Sign Up</button>
+                <button class="btn btn-primary signupspin" >Sign Up</button>
               </center>  
             </div>
             <br/>
@@ -129,7 +197,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Are you sure</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
           <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
           </button>
@@ -141,7 +209,7 @@
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="Username" class="form-control"><br>
                 <input type="password" name="password" placeholder="Password" class="form-control"><br>                <center>
-                  <button class="btn btn-primary">Login</button>
+                  <button class="btn btn-primary loginspin"  style="width:100%">Login</button>
                 </center>
               </form>
               <div class="container">
@@ -171,13 +239,13 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Are you sure</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to logout?</h5>
           <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <a href="{% url 'logout'%}" class="btn btn-danger">Logout</a>
+          <a href="{% url 'logout'%}" class="btn btn-danger">Yes</a>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

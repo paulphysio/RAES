@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import activity, askedQuestions
 import pandas as pd
 import openpyxl as op
@@ -15,6 +15,7 @@ def questionAskedView(request):
         
         question = request.POST['question']
         askedQuestions(question=question).save()
+        return redirect('about')
     return render(request, "about.html")
 
 # class deleteView(DeleteView):

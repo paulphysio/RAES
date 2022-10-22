@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import signUpView, loginView, createProfileView, editProfileView, EditProfileNameView, UserView
-from .views import signUpView, loginView, createProfileView, editProfileView, EditProfileNameView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [

@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -81,4 +81,5 @@ class editProfileView(UpdateView):
     model = profile
     form_class = ProfileEditForm
     template_name = "registration/edit_profile.html"
-    success_url = reverse_lazy("home")
+    def get_success_url(self):
+        return reverse("edit_profile", args=[self.object.pk])
