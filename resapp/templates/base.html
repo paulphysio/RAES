@@ -99,7 +99,7 @@
     
                 <input id="question" type="text" name="question" class="form-control" placeholder="Ask a Question" style="width:100%;" required>
                 <br>
-                <button class="btn btn-primary" style="width:50%;">send</button>
+                <button class="btn btn-primary question" style="width:50%;">send</button>
             </center>
           </form>
         </div>
@@ -173,12 +173,16 @@
               {% endfor %}
               <br>
               <center>
-                <button class="btn btn-primary signupspin" >Sign Up</button>
+                <button class="btn btn-primary signupspin" style="width:100%">Sign Up</button>
               </center>  
             </div>
             <br/>
                   
-        </form>        </div>
+        </form>
+        <div class="container">
+          <p>If you already have an account, <a href="#" data-toggle="modal" data-target="#Login">Login</a></p>
+        </div>
+              </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
@@ -207,14 +211,14 @@
             <div class="container" style="padding:10px">
               <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="Username" class="form-control"><br>
-                <input type="password" name="password" placeholder="Password" class="form-control"><br>                <center>
-                  <button class="btn btn-primary loginspin"  style="width:100%">Login</button>
+                <input id="modallogin_username" type="text" name="username" placeholder="Username" class="form-control"><br>
+                <input id="modallogin_password" type="password" name="password" placeholder="Password" class="form-control"><br>                <center>
+                  <button class="btn btn-primary modloginspin"  style="width:100%">Login</button>
                 </center>
               </form>
               <div class="container">
                 <p><a href="#" data-toggle="modal" data-target="#Password_reset">forgot password</a></p>
-                <p>Don't have an account, <a href="{% url 'sign_up' %}"> Sign Up</a></p>
+                <p>Don't have an account, <a href="#" data-toggle="modal" data-target="#Signup"> Sign Up</a></p>
               </div>
           
           
@@ -245,7 +249,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <a href="{% url 'logout'%}" class="btn btn-danger">Yes</a>
+          <a href="{% url 'logout'%}" class="btn btn-danger logout" style="width: 100%;">Yes I'm sure</a>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -276,7 +280,7 @@
             {% csrf_token %}
             <div class="auth-container">
               <label for="id_email">Email:</label>
-              <input type="email" name="email" autocomplete="email" maxlength="254" required="" id="id_email" class="form-control"><br>
+              <input type="email" name="email" autocomplete="email" maxlength="254" required="" id="id_reset_email" class="form-control"><br>
               <center>
                   <button class="btn btn-primary">reset password</button>
               </center>   

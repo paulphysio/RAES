@@ -20,26 +20,32 @@ class SignUpForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['username'].widget.attrs['style'] = 'max-width: 500px'
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
+        self.fields['username'].widget.attrs['required'] = True
         self.fields['username'].label= ''
         self.fields['first_name'].widget.attrs['class'] = 'form-control'
         self.fields['first_name'].widget.attrs['style'] = 'max-width: 500px'
         self.fields['first_name'].widget.attrs['placeholder'] = 'First Name'
+        self.fields['first_name'].widget.attrs['required'] = True
         self.fields['first_name'].label = ''
         self.fields['last_name'].widget.attrs['class'] = 'form-control'
         self.fields['last_name'].widget.attrs['style'] = 'max-width: 500px'
         self.fields['last_name'].widget.attrs['placeholder'] = 'Last Name'
+        self.fields['last_name'].widget.attrs['required'] = True
         self.fields['last_name'].label = ''
         self.fields['email'].widget.attrs['class'] = 'form-control'
         self.fields['email'].widget.attrs['style'] = 'max-width: 500px'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
+        self.fields['email'].widget.attrs['required'] = True
         self.fields['email'].label = ''
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['style'] = 'max-width: 500px'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
+        self.fields['password1'].widget.attrs['required'] = True
         self.fields['password1'].label = ''
         self.fields['password2'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['style'] = 'max-width: 500px'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
+        self.fields['password2'].widget.attrs['required'] = True
         self.fields['password2'].label = ''
 
 

@@ -9,10 +9,10 @@
   <div class="container" style="padding:10px">
     <form action="" method="POST">
       {% csrf_token %}
-      <input type="text" name="username" placeholder="Username" class="form-control"><br>
-      <input type="password" name="password" placeholder="Password" class="form-control"><br>
+      <input id="login_username" type="text" name="username" placeholder="Username" class="form-control"><br>
+      <input id="login_password" type="password" name="password" placeholder="Password" class="form-control"><br>
       <center>
-        <button class="btn btn-primary spin"  style="width:100%">Login</button>
+        <button class="btn btn-primary loginspin"  style="width:100%">Login</button>
       </center>
     </form>
     <div class="container">
