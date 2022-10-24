@@ -163,6 +163,9 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="container">
+            <p>If you already have an account, <a href="#" data-toggle="modal" data-target="#Login" style="color: rgb(7, 51, 210);font-weight: 700; font-size: 20px;">Login</a></p>
+          </div>
           <form action="{% url 'sign_up' %}" method="POST"class="row g-3 needs-validation">
             {% csrf_token %}
            
@@ -197,7 +200,7 @@
   <!-- =======================================================
   * Modal form for Login
   ======================================================== -->
-  <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(7, 10, 11, 0.50);">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -377,9 +380,10 @@
             <!-- <img src="{% static  'assets/img/logo.png' %}" alt=""> -->
             <h1>RAES</h1>
           </a>
+    {% if user.is_authenticated %}
     {% if user.profile %}
       {% if user.profile.profile_pics %}
-          <a href="#" class="logo d-flex align-items-center pop" style="list-style-type: none;">
+          <a href="#" class="logo d-flex align-items-right pop" style="list-style-type: none;">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="border-radius: 50%;width: 50px; height:50px;">
           </a>
@@ -407,29 +411,31 @@
         </div>
       </a>
       {% endif %}
+      {%else%}
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+              <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+              <nav id="navbar" class="navbar" >
+                <ul>
+                  <!-- <li><a href="{% url 'home' %}" >Home</a></li> -->
+                  <!-- <li><a href="{% url 'about' %}" >About</a></li> -->
+                  <!-- {% if user.profile %}
+                    <li><a href="{% url 'edit_profile' user.profile.id %}" >Profile</a></li>
+                    {%else%}
+                    
+                    <li><a href="{% url 'create_profile' %}" >Profile</a></li>
+                    
+                    {%endif%} -->
+                    <!-- <li><a href="{% url 'chat_list'%}">Chat</a></li> -->
+                    <!-- <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li> -->
+                
+                    <li> <a href="#" data-toggle="modal" data-target="#Login"  >Login </a></li>
+                      <li><a href="#" data-toggle="modal" data-target="#Signup" >Signup</a></li>
+
+                  
+      {% endif %}
       
       {% if not user.is_authenticated %}
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-      {% endif %}
-      <nav id="navbar" class="navbar" >
-        <ul>
-          <!-- <li><a href="{% url 'home' %}" >Home</a></li> -->
-          <!-- <li><a href="{% url 'about' %}" >About</a></li> -->
-          {% if user.is_authenticated %}
-          <!-- {% if user.profile %}
-            <li><a href="{% url 'edit_profile' user.profile.id %}" >Profile</a></li>
-            {%else%}
-            
-            <li><a href="{% url 'create_profile' %}" >Profile</a></li>
-            
-            {%endif%} -->
-            <!-- <li><a href="{% url 'chat_list'%}">Chat</a></li> -->
-            <!-- <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li> -->
-          {%else%}
-          
-          <li><a href="#" data-toggle="modal" data-target="#Login">Login</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#Signup">Signup</a></li>
+      
           
           {%endif%}
         </ul>
@@ -438,6 +444,8 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
+
+  
 
   <main id="main">
 
@@ -474,6 +482,15 @@
               }
           }
       </style>
+      {% if not user.is_authenticated %}
+        <div style="padding-left: 70%;">
+      <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary" style="width:200px ;" >Login or Signup</a>
+      </div><br><br>
+      {% endif %}
+      <!-- <div class="col-1">
+      <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary">Signup</a>
+      </div> -->
+   
       <input id="userid" type="text" value="{{user.id}}" hidden>
       <input id="user" type="text" value="{{user.first_name}} {{user.last_name}}" hidden>
       {% if user.profile %}
