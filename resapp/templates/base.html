@@ -367,32 +367,65 @@
   <!-- =======================================================
   * Closing Modal form for uploading of Excel file
   ======================================================== -->
+
+  
   <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
+  <header id="header" class="header d-flex align-items-center fixed-top sticked">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-      <a href="{% url 'home'%}" class="logo d-flex align-items-center">
+    <a href="{% url 'home'%}" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="{% static  'assets/img/logo.png' %}" alt=""> -->
+            <h1>RAES</h1>
+          </a>
+    {% if user.profile %}
+      {% if user.profile.profile_pics %}
+          <a href="#" class="logo d-flex align-items-center pop" style="list-style-type: none;">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="border-radius: 50%;width: 50px; height:50px;">
+          </a>
+      {% else %}
+      <a href="{% url 'edit_profile' user.profile.id %}" class="logo d-flex align-items-center pop">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="{% static  'assets/img/logo.png' %}" alt=""> -->
-        <h1>RES</h1>
+        <div style="width: 50px; height:50px; background-color:brown; border-radius: 50%; color:white">
+          {% for i in user.username %}
+            {% if forloop.first %}
+              <h1 class="text-center" style="padding-top: 8px;">{{i}}</h1>
+            {% endif %}
+          {% endfor %}
+        </div>
       </a>
-
+      {% endif %}
+      {% else %}
+      <a href="{% url 'create_profile' %}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <div style="width: 50px; height:50px; background-color:brown; border-radius: 50%; color:white">
+          {% for i in user.username %}
+            {% if forloop.first %}
+              <h1 class="text-center" style="padding-top: 8px;">{{i}}</h1>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </a>
+      {% endif %}
+      
+      {% if not user.is_authenticated %}
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-      <nav id="navbar" class="navbar">
+      {% endif %}
+      <nav id="navbar" class="navbar" >
         <ul>
-          <li><a href="{% url 'home' %}" >Home</a></li>
-          <li><a href="{% url 'about' %}" >About</a></li>
+          <!-- <li><a href="{% url 'home' %}" >Home</a></li> -->
+          <!-- <li><a href="{% url 'about' %}" >About</a></li> -->
           {% if user.is_authenticated %}
-          {% if user.profile %}
-            <li><a href="{% url 'edit_profile' user.profile.id %}" >Edit Profile</a></li>
+          <!-- {% if user.profile %}
+            <li><a href="{% url 'edit_profile' user.profile.id %}" >Profile</a></li>
             {%else%}
             
-            <li><a href="{% url 'create_profile' %}" >Create Profile</a></li>
+            <li><a href="{% url 'create_profile' %}" >Profile</a></li>
             
-            {%endif%}
-            <li><a href="{% url 'chat_list'%}">Chat</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li>
+            {%endif%} -->
+            <!-- <li><a href="{% url 'chat_list'%}">Chat</a></li> -->
+            <!-- <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li> -->
           {%else%}
           
           <li><a href="#" data-toggle="modal" data-target="#Login">Login</a></li>
@@ -409,7 +442,7 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    <!-- <div class="breadcrumbs">
       <div class="page-header d-flex align-items-center">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
@@ -422,7 +455,7 @@
       <nav>
         
       </nav>
-    </div><!-- End Breadcrumbs -->
+    </div>End Breadcrumbs -->
 
     <section class="sample-page">
       <div class="container " data-aos="fade-up">
@@ -441,7 +474,11 @@
               }
           }
       </style>
-      
+      <input id="userid" type="text" value="{{user.id}}" hidden>
+      <input id="user" type="text" value="{{user.first_name}} {{user.last_name}}" hidden>
+      {% if user.profile %}
+      <input id="userprofileid" type="text" value="{{user.profile.id}}" hidden>
+      {% endif %}
         {% block content %}
         {% endblock %}
       </div>
@@ -455,10 +492,10 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span>RES</span>
+          <a href="{% url 'about' %}" class="logo d-flex align-items-center">
+            <span>RAES</span>
           </a>
-          <p>RES(Result Email Sender) is a web-app used in sending school results in an Excel Sheet containing every Students Email. Note: It only send the particular student result to the particular student Email not all results.</p>
+          <p>RAES was created to lessen the work load on Course advisers, save time & energy and also reduce the stress students go through to see their Results.</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -492,7 +529,7 @@
             FUTO, Imo State<br>
             Nigeria <br><br>
             <strong>Phone:</strong> +234 814 631 1456<br>
-            <strong>Email:</strong> Obinnap350@gmail.com<br>
+            <strong>Email:</strong> Emilyjohnson25099@gmail.com<br>
           </p>
 
         </div>
@@ -502,14 +539,14 @@
 
     <div class="container mt-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>RES</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>ELPA</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/ -->
-        Designed by <a href="https://github.com/paulphysio">Paul Physio (a.k.a Mbappe)</a>
+        Designed by <a href="https://github.com/paulphysio">ELPA Technologies</a>
       </div>
     </div>
 

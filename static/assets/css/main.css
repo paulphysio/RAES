@@ -384,7 +384,6 @@ section {
 --------------------------------------------------------------*/
 .header {
   transition: all 0.5s;
-  z-index: 997;
   padding: 30px 0;
 }
 
@@ -410,7 +409,31 @@ section {
 /*--------------------------------------------------------------
 # Desktop Navigation
 --------------------------------------------------------------*/
-@media (min-width: 1280px) {
+/* @media (min-width: 1280px) {
+  .popover .popover-body ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: right;
+  }
+  .popover-body li {
+    position: relative;
+  }
+
+  .popover-body a,
+  .popover-body a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    transition: 0.3s;
+  }
   .navbar {
     padding: 0;
   }
@@ -526,7 +549,7 @@ section {
     left: 100%;
     visibility: visible;
   }
-}
+} */
 
 @media (min-width: 1280px) and (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
@@ -554,7 +577,7 @@ section {
 /*--------------------------------------------------------------
 # Mobile Navigation
 --------------------------------------------------------------*/
-@media (max-width: 1279px) {
+@media (max-width: 1500px) {
   .navbar {
     position: fixed;
     top: 0;
