@@ -13,8 +13,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static  'assets/img/RES_logo.png' %}" rel="icon">
-  <link href="{% static  'assets/img/RES_logo.png' %}" rel="apple-touch-icon">
+  <link href="{% static  'assets/img/backlogo.png' %}" rel="icon" style="width: 100px;">
+  <link href="{% static  'assets/img/backlogo.png' %}" rel="apple-touch-icon"style="width: 70px;">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,9 +52,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ask a question</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <center>
@@ -87,9 +87,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ask a question</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <form action="{% url 'question' %}" method="post">
@@ -121,9 +121,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Delete this file</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <div class="container">
@@ -158,9 +158,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <div class="container">
@@ -205,9 +205,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <div class="auth-container">
@@ -247,9 +247,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to logout?</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <a href="{% url 'logout'%}" class="btn btn-danger logout" style="width: 100%;">Yes I'm sure</a>
@@ -272,9 +272,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Password reset</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <p>Forgotten your password? Enter your email address below, and we’ll email instructions for setting a new one.</p>
@@ -308,9 +308,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Upload Excel File</h5>
-          <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close" style="width: 50px;">
+          <!-- <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close" style="width: 50px;">
             <span aria-hidden="true" >&times;</span>
-          </button>
+          </button> -->
         </div>
         <div class="modal-body">
           <div class="container text-center" style="padding-top:10px">
@@ -377,8 +377,8 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
     <a href="{% url 'home'%}" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="{% static  'assets/img/logo.png' %}" alt=""> -->
-            <h1>RAES</h1>
+            <img src="{% static  'assets/img/noback.png' %}" alt="">
+            <!-- <h1>RAES</h1> -->
           </a>
     {% if user.is_authenticated %}
     {% if user.profile %}
@@ -505,12 +505,16 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-
+<div>
+  <center>
+    <i class="bi bi-windows" style="color: rgba(235, 246, 34, 0.893); font-size: 50px"></i> <i class="bi bi-apple"  style="color: rgba(235, 246, 34, 0.893); font-size: 50px"></i>
+  </center><br>
+</div>
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="{% url 'about' %}" class="logo d-flex align-items-center">
-            <span>RAES</span>
+            <img src="{% static  'assets/img/noback.png' %}" alt="">
           </a>
           <p>RAES was created to lessen the work load on Course advisers, save time & energy and also reduce the stress students go through to see their Results.</p>
           <div class="social-links d-flex mt-4">
