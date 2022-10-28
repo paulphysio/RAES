@@ -1,12 +1,13 @@
 $(function () {
     var userid = document.querySelector('[id="userprofileid"]').value
-    var user = document.querySelector('[id="user"]').value
+    var user = document.querySelector('[id="user"]').innerHTML
   $('.pop').popover({
     html:true,
     title:user,
     content: `
     
       <p><a href="/users/profile/edit/${userid}" >Profile</a></p>      
+      <p><a href="/home">Result Upload</a></p>
       <p><a href="/chat">Chat</a></p>
       <p><a href="/users/logout">Logout</a></p>
    

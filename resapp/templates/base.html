@@ -375,7 +375,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top sticked">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-    <a href="{% url 'home'%}" class="logo d-flex align-items-center">
+    <a href="{% url 'about'%}" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <img src="{% static  'assets/img/whitelogo.png' %}" alt="">
             <!-- <h1>RAES</h1> -->
@@ -492,7 +492,8 @@
       </div> -->
    
       <input id="userid" type="text" value="{{user.id}}" hidden>
-      <input id="user" type="text" value="{{user.first_name}} {{user.last_name}}" hidden>
+      
+      <p id="user" hidden><a>{{user.first_name}} {{user.last_name}} {% if user.profile.is_hod %}<i class="bi bi-patch-check" style="color: #5ddbf2;"></i>{% endif %}</a></p>
       {% if user.profile %}
       <input id="userprofileid" type="text" value="{{user.profile.id}}" hidden>
       {% endif %}
@@ -508,16 +509,16 @@
 <div>
   <center>
     <i class="bi bi-windows" style=" font-size: 50px"></i> <i class="bi bi-apple"  style="font-size: 50px"></i>
-  </center><br>
+  </center><br> <center> <hr style="width: 75%;"></center>
 </div>
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="{% url 'about' %}" class="logo d-flex align-items-center">
-            <img src="{% static  'assets/img/noback.png' %}" alt="">
+            <img src="{% static  'assets/img/noback.png' %}" alt="" style="height: 20px; padding-bottom: 0px">
           </a>
-          <p>RAES was created to lessen the work load on Course advisers, save time & energy and also reduce the stress students go through to see their Results.</p>
-          <div class="social-links d-flex mt-4">
+          <a style="padding-top: 0px;"> RAES is a platform that eliminates problems faced by course advisers in the course of distributing results to students. Here we will provide you with a hassle-free way to distribute results without wasting time and energy. We're working to reduce down-time faced as well as helping students and course advisers keep records of sent results.
+          </a>          <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -528,7 +529,7 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home' %}">Result upload</a></li>
             <li><a href="{% url 'about_us' %}">About us</a></li>
           </ul>
         </div>
@@ -567,7 +568,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/ -->
-        Designed by <a href="https://github.com/paulphysio">ELPA Technologies</a>
+        Designed by <a href="{% url 'about_us' %}">ELPA Technologies</a>
       </div>
     </div>
 

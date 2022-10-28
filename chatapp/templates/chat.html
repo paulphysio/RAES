@@ -1,6 +1,6 @@
 
 {% extends "base.html" %}
-{% block title %}Chat{% endblock%}
+{% block title %}{{receivers.first_name}} {{receivers.last_name}}{% endblock%}
 {% block content %}  
 {% if user.is_authenticated %}
 <div style="padding-left: 15px;"><a href="{% url 'chat_list'%}" class="btn btn-primary">Back</a></div><br>
@@ -9,15 +9,17 @@
     
     <h3><img src="{{ receivers.profile.profile_pics.url }}" style="height:50px; width:50px;border-radius:50% "> {{ receivers.username}}</h3>
 </div><br> 
-<div class="container auth-container" style="max-height:500px; overflow:auto">
+<div class="container auth-container" >
+    <div class="container" style="max-height:500px; overflow:auto" >
+
     {% for msg in msgs %}
 
         {% if msg.sender == user and msg.receiver == receivers %}
         {% if msg.msg_picture %}
-            <div class="sender-div">
-                <div class="sender">
+            <div class="sender-div" >
+                <div class="sender" >
                         
-                        <div style="padding:10px">
+                        <div style="padding:10px; ">
                             {{msg.msg}}<br>
                             <a href="{{ msg.msg_picture.url }}"><img src="{{ msg.msg_picture.url }}" alt="" style="max-width: 50px; max-height:50px"><br></a>
                         </div>
@@ -54,7 +56,7 @@
             </div>
         {% endif %}<br><br><br>{% endif %}
     {% endfor %}<br>
-
+</div>
 <div class="container">
     <form action="" method="POST" enctype="multipart/form-data" style="font-size:15px">
         {% csrf_token %}
