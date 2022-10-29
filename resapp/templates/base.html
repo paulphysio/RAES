@@ -35,12 +35,7 @@
   <link href="{% static  'assets/css/main.css' %}" rel="stylesheet">
   <link href="{% static  'main.css' %}" rel="stylesheet">
   
-  <!-- =======================================================
-  * Template Name: Logis - v1.0.1
-  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 
 <body>
@@ -383,10 +378,25 @@
     {% if user.is_authenticated %}
       {% if user.profile %}
         {% if user.profile.profile_pics %}
+        <div class="row" style="max-width: 50%">
+          
+          <div class="col-6" style="padding-top: 10px">
+            <a href="{% url 'home' %}" class="btn btn-primary" style="width: 100%; font-size: 15px; ">Upload Results</a>
+          </div>
+          <div class="col-3" style="padding-top: 10px">
+            <a href="#" class="logo d-flex align-items-right" >
+              <!-- Uncomment the line below if you also wish to use an image logo -->
+                Support
+            </a>
+          </div>
+          <div class="col-3">
             <a href="#" class="logo d-flex align-items-right pop" style="list-style-type: none;">
               <!-- Uncomment the line below if you also wish to use an image logo -->
               <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="border-radius: 50%;width: 50px; height:50px;">
             </a>
+          </div>
+          
+             </div>
         {% else %}
         <a href="{% url 'edit_profile' user.profile.id %}" class="logo d-flex align-items-center pop">
           <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -412,8 +422,9 @@
         </a>
         {% endif %}
       {%else%}
-      <div style="padding-left: 70%;">
-        <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary" style="width:200px ;" >Login or Signup</a>
+      <div style="max-width: 500px">
+        <p><a href="#" data-toggle="modal" data-target="#Login" class="btn btn-primary "  >Login</a>
+        <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary"  >Signup</a></p>
         </div>
         <!-- <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
               <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>

@@ -7,7 +7,6 @@ $(function () {
     content: `
     
       <p><a href="/users/profile/edit/${userid}" >Profile</a></p>      
-      <p><a href="/home">Result Upload</a></p>
       <p><a href="/chat">Chat</a></p>
       <p><a href="/users/logout">Logout</a></p>
    
