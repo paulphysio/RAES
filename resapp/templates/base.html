@@ -381,41 +381,44 @@
             <!-- <h1>RAES</h1> -->
           </a>
     {% if user.is_authenticated %}
-    {% if user.profile %}
-      {% if user.profile.profile_pics %}
-          <a href="#" class="logo d-flex align-items-right pop" style="list-style-type: none;">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="border-radius: 50%;width: 50px; height:50px;">
-          </a>
+      {% if user.profile %}
+        {% if user.profile.profile_pics %}
+            <a href="#" class="logo d-flex align-items-right pop" style="list-style-type: none;">
+              <!-- Uncomment the line below if you also wish to use an image logo -->
+              <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="border-radius: 50%;width: 50px; height:50px;">
+            </a>
+        {% else %}
+        <a href="{% url 'edit_profile' user.profile.id %}" class="logo d-flex align-items-center pop">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <div style="width: 50px; height:50px; background-color:brown; border-radius: 50%; color:white">
+            {% for i in user.username %}
+              {% if forloop.first %}
+                <h1 class="text-center" style="padding-top: 8px;">{{i}}</h1>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </a>
+        {% endif %}
       {% else %}
-      <a href="{% url 'edit_profile' user.profile.id %}" class="logo d-flex align-items-center pop">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <div style="width: 50px; height:50px; background-color:brown; border-radius: 50%; color:white">
-          {% for i in user.username %}
-            {% if forloop.first %}
-              <h1 class="text-center" style="padding-top: 8px;">{{i}}</h1>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </a>
-      {% endif %}
-      {% else %}
-      <a href="{% url 'create_profile' %}" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <div style="width: 50px; height:50px; background-color:brown; border-radius: 50%; color:white">
-          {% for i in user.username %}
-            {% if forloop.first %}
-              <h1 class="text-center" style="padding-top: 8px;">{{i}}</h1>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </a>
-      {% endif %}
+        <a href="{% url 'create_profile' %}" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <div style="width: 50px; height:50px; background-color:brown; border-radius: 50%; color:white">
+            {% for i in user.username %}
+              {% if forloop.first %}
+                <h1 class="text-center" style="padding-top: 8px;">{{i}}</h1>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </a>
+        {% endif %}
       {%else%}
-        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <div style="padding-left: 70%;">
+        <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary" style="width:200px ;" >Login or Signup</a>
+        </div>
+        <!-- <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
               <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
               <nav id="navbar" class="navbar" >
-                <ul>
+                <ul> -->
                   <!-- <li><a href="{% url 'home' %}" >Home</a></li> -->
                   <!-- <li><a href="{% url 'about' %}" >About</a></li> -->
                   <!-- {% if user.profile %}
@@ -428,16 +431,13 @@
                     <!-- <li><a href="{% url 'chat_list'%}">Chat</a></li> -->
                     <!-- <li><a href="#" data-toggle="modal" data-target="#Logout">Logout</a></li> -->
                 
-                    <li> <a href="#" data-toggle="modal" data-target="#Login"  >Login </a></li>
-                      <li><a href="#" data-toggle="modal" data-target="#Signup" >Signup</a></li>
+                    <!-- <li> <a href="#" data-toggle="modal" data-target="#Login"  >Login </a></li>
+                      <li><a href="#" data-toggle="modal" data-target="#Signup" >Signup</a></li> -->
 
                   
       {% endif %}
       
-      {% if not user.is_authenticated %}
-      
-          
-          {%endif%}
+     
         </ul>
       </nav><!-- .navbar -->
 
@@ -482,11 +482,7 @@
               }
           }
       </style>
-      {% if not user.is_authenticated %}
-        <div style="padding-left: 70%;">
-      <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary" style="width:200px ;" >Login or Signup</a>
-      </div><br><br>
-      {% endif %}
+      
       <!-- <div class="col-1">
       <a href="#" data-toggle="modal" data-target="#Signup" class="btn btn-primary">Signup</a>
       </div> -->
