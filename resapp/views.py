@@ -71,6 +71,8 @@ def aboutView(request):
     return render(request, "about.html")
 def aboutUsView(request):
     return render(request, "about_us.html")
+def guidesView(request):
+    return render(request, "guides.html")
 @login_required
 def detailView(request, pk):
     activity_detail = activity.objects.get(id=pk)

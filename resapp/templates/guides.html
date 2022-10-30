@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About the Creator{% endblock%}
+{% block content %}
+<!-- ======= Our Team Section ======= -->
+<section id="team" class="team pt-0">
+    <div class="container" >
+    
+    <div class="section-header">
+      <span>Our Team</span>
+      <h2>Our Team</h2>
+    
+    </div>
+    
+    <div class="row" data-aos="fade-up">
+    
+      <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+        <div class="member">
+          <img src="{% static 'assets/img/guides/pic1.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Step 1 </h4>
+            <span>click upload button</span>
+            {% comment %} <p>
+              Fullstack web developer, Graphics designer.
+            </p> {% endcomment %}
+            
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    
+       <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+        <div class="member">
+          <img src="{% static 'assets/img/guides/pic2.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Step 2</h4>
+            <span>select level</span>
+           
+            
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    
+       <div class="col-lg-4 col-md-6 d-flex">
+        <div class="member">
+          <img src="{% static 'assets/img/guides/pic3.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Step 3</h4>
+            <span>Select session</span>
+           
+          </div>
+        </div>
+      </div><!-- End Team Member --> 
+
+      <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+        <div class="member">
+          <img src="{% static 'assets/img/guides/pic4.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Step 4 </h4>
+            <span>select department</span>
+            {% comment %} <p>
+              Fullstack web developer, Graphics designer.
+            </p> {% endcomment %}
+            
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    
+       <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+        <div class="member">
+          <img src="{% static 'assets/img/guides/pic5.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Step 5</h4>
+            <span>select semester</span>
+           
+            
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    
+       <div class="col-lg-4 col-md-6 d-flex">
+        <div class="member">
+          <img src="{% static 'assets/img/guides/pic6.jpg' %}" class="img-fluid" alt="">
+          <div class="member-content">
+            <h4>Step 6</h4>
+            <span>View and send</span>
+           
+          </div>
+        </div>
+      </div><!-- End Team Member --> 
+    
+    </div>
+    
+    </div>
+    </section><!-- End Our Team Section -->
+{% endblock %}
