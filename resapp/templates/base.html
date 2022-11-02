@@ -471,7 +471,7 @@
         <div class="row" style="max-width: 50%">
           
           <div class="col-6" style="padding-top: 10px">
-            <a href="{% url 'home' %}" class="btn btn-primary" style="width: 100%; font-size: 15px; ">Upload Results</a>
+            <a href="{% url 'home' %}" class="btn btn-primary">Upload Results</a>
           </div>
           <div class="col-3" style="padding-top: 10px">
             <a href="#" class="logo d-flex align-items-right" >
@@ -480,9 +480,9 @@
             </a>
           </div>
           <div class="col-3">
-            <a href="#" class="logo d-flex align-items-right pop" style="list-style-type: none;">
+            <a href="#" class="logo d-flex align-items-right pop" >
               <!-- Uncomment the line below if you also wish to use an image logo -->
-              <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" style="border-radius: 50%;width: 50px; height:50px;">
+              <img src="{{ user.profile.profile_pics.url }}" alt="{{ user.username }}" >
             </a>
           </div>
           

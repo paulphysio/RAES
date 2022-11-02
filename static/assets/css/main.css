@@ -408,6 +408,49 @@ section {
   margin-right: 6px;
 }
 
+.header .row .col-6 {
+  padding-top: 10px;
+}
+
+.header .row .col-3 a {
+  list-style-type: none;
+}
+
+.header .row .col-3 a img{
+  border-radius: 50%;
+  width: 50px;
+  height:50px;}
+
+.header .row .col-6 a{
+  width: 100%;
+  font-size: 15px;
+}
+@media screen and (max-width: 570px) {
+  .header .logo img {
+    max-width: 50px;
+  }
+  .header .row .col-6 {
+    padding-top: 0px;
+  }
+  
+  .header .row .col-3 a {
+    margin-left: -10px;
+    font-size: 10px;
+    padding-top: 5px;
+  }
+  
+  .header .row .col-3 a img{
+    border-radius: 50%;
+    width: 50px;
+    height:50px;
+  }
+  
+  .header .row .col-6 a{
+    width: 100%;
+    font-size: 10px;
+  }
+}
+
 .header .logo h1 {
   font-size: 30px;
   margin: 0;
