@@ -1466,7 +1466,7 @@ a .chat:hover{
 #myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal {
+.modal1 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -1481,7 +1481,7 @@ a .chat:hover{
 }
 
 /* Modal Content (Image) */
-.modal-content {
+.modal-content1 {
   margin: auto;
   display: block;
   width: 80%;
@@ -1501,7 +1501,7 @@ a .chat:hover{
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
+.modal-content1, #caption {
   animation-name: zoom;
   animation-duration: 0.6s;
 }
