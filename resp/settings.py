@@ -139,7 +139,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.manifeststaticfilesstorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -171,5 +171,5 @@ EMAIL_HOST_PASSWORD = 'wlwzkvalbpwebxot'
 # AWS_S3_FILE_OVERWRITE = False
 # AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 django_heroku.settings(locals())
