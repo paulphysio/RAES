@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'auth_sys.apps.AuthSysConfig',
     'chatapp.apps.ChatappConfig',
     'crispy_forms',
+    'storages',
+    
 ]
 
 MIDDLEWARE = [
@@ -138,7 +140,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
@@ -162,4 +164,12 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'emilyjohnson25099@gmail.com'
 EMAIL_HOST_PASSWORD = 'wlwzkvalbpwebxot'
 
+# AWS_ACCESS_KEY_ID = "AKIATROPYRYYMEE3RJ73"
+# AWS_SECRET_ACCESS_KEY = "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"
+# AWS_STORAGE_BUCKET_NAME="raes-bucket"
+
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 django_heroku.settings(locals())
